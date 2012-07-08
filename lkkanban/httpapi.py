@@ -36,3 +36,11 @@ class HttpApi(object):
         endpoint = self._get_endpoint('Boards')
         r = self.session.get(endpoint)
         return r.json
+
+    def get_board_identifiers(self, board_id):
+        """Implements LeanKit's GetBoardIdentifiers
+        See http://support.leankitkanban.com/entries/20267921-getboardidentifiers
+        """
+        endpoint = self._get_endpoint('GetBoardIdentifiers', board_id)
+        r = self.session.get(endpoint)
+        return r.json
