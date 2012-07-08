@@ -2,7 +2,9 @@ import requests
 
 
 class HttpApi(object):
-    """A minimal wrapper around the LeanKitKanban HTTP API."""
+    """A minimal wrapper around the LeanKitKanban HTTP API.
+       Methods take dictionaries for POST data, returns JSON
+    """
     def __init__(self, account_name, username, password, _service_base=None):
         self.account_name = account_name
         self.session = requests.session(auth=(username, password))
@@ -26,3 +28,11 @@ class HttpApi(object):
             url_template = url_template.replace('$', '/')
         return url_template % \
             {'account': self.account_name, 'name': name, 'board_id': board_id}
+
+    def get_boards(self):
+        """Implements LeanKits' GetBoards method
+        See http://support.leankitkanban.com/entries/20264797-get-boards
+        """
+        endpoint = self._get_endpoint('Boards')
+        r = self.session.get(endpoint)
+        return r.json
