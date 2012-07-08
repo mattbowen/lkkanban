@@ -19,6 +19,7 @@ setup(name='lkkanban',
     zip_safe=False,
     install_requires=[
         'requests',
+        'nosetests',
         # -*- Extra requirements: -*-
     ],
     entry_points="""
