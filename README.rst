@@ -14,6 +14,7 @@ go away).
 Using the HTTP API wrapper looks like this.
 
 ::
+
     >>> from lkkanban.httpapi import HttpApi
     >>> api = HttpApi('account', 'user@example.com', 'password')
     >>> api.get_boards()
