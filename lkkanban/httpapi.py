@@ -30,7 +30,7 @@ class HttpApi(object):
             {'account': self.account_name, 'name': name, 'board_id': board_id}
 
     def get_boards(self):
-        """Implements LeanKits' GetBoards method
+        """Wraps LeanKits' GetBoards method
         See http://support.leankitkanban.com/entries/20264797-get-boards
         """
         endpoint = self._get_endpoint('Boards')
@@ -38,7 +38,7 @@ class HttpApi(object):
         return r.json
 
     def get_board_identifiers(self, board_id):
-        """Implements LeanKit's GetBoardIdentifiers
+        """Wraps LeanKit's GetBoardIdentifiers
         See http://support.leankitkanban.com/entries/20267921-getboardidentifiers
         """
         endpoint = self._get_endpoint('GetBoardIdentifiers', board_id)
@@ -46,7 +46,7 @@ class HttpApi(object):
         return r.json
 
     def get_board(self, board_id):
-        """Implements LeanKit's GetBoard
+        """Wraps LeanKit's GetBoard
         See http://support.leankitkanban.com/entries/20267956-get-board
         """
         endpoint = self._get_endpoint('Boards', board_id)
@@ -54,7 +54,7 @@ class HttpApi(object):
         return r.json
 
     def get_newer_if_exists(self, board_id, board_version):
-        """Implements LeanKit's GetNewerIfExists
+        """Wraps LeanKit's GetNewerIfExists
         See http://support.leankitkanban.com/entries/20267966-getnewerifexists
         """
         base_endpoint = self._get_endpoint('BoardVersion', board_id)
@@ -66,7 +66,7 @@ class HttpApi(object):
         return r.json
 
     def get_board_history_since(self, board_id, board_version):
-        """Implements LeanKit's GetBoardHistorySince
+        """Wraps LeanKit's GetBoardHistorySince
         See http://support.leankitkanban.com/entries/20267971-getboardhistorysince
         """
         base_endpoint = self._get_endpoint('BoardVersion', board_id)
@@ -74,5 +74,14 @@ class HttpApi(object):
             base_endpoint,
             str(board_version),
             'GetBoardHistorySince'))
+        r = self.session.get(endpoint)
+        return r.json
+
+    def get_card(self, board_id, card_id):
+        """Wraps LeanKit's GetCard
+        See http://support.leankitkanban.com/entries/20267991-getcard
+        """
+        base_endpoint = self._get_endpoint('GetCard', board_id)
+        endpoint = '/'.join((base_endpoint, str(card_id)))
         r = self.session.get(endpoint)
         return r.json
