@@ -64,3 +64,15 @@ class HttpApi(object):
             'GetNewerIfExists'))
         r = self.session.get(endpoint)
         return r.json
+
+    def get_board_history_since(self, board_id, board_version):
+        """Implements LeanKit's GetBoardHistorySince
+        See http://support.leankitkanban.com/entries/20267971-getboardhistorysince
+        """
+        base_endpoint = self._get_endpoint('BoardVersion', board_id)
+        endpoint = '/'.join((
+            base_endpoint,
+            str(board_version),
+            'GetBoardHistorySince'))
+        r = self.session.get(endpoint)
+        return r.json
