@@ -52,3 +52,15 @@ class HttpApi(object):
         endpoint = self._get_endpoint('Boards', board_id)
         r = self.session.get(endpoint)
         return r.json
+
+    def get_newer_if_exists(self, board_id, board_version):
+        """Implements LeanKit's GetNewerIfExists
+        See http://support.leankitkanban.com/entries/20267966-getnewerifexists
+        """
+        base_endpoint = self._get_endpoint('BoardVersion', board_id)
+        endpoint = '/'.join((
+            base_endpoint,
+            str(board_version),
+            'GetNewerIfExists'))
+        r = self.session.get(endpoint)
+        return r.json
