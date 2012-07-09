@@ -6,8 +6,10 @@ Unlike other python LeanKit libraries, it is permissively licenses (it uses
 ISC). Although it aspires to provide a pythonic API, right now it is just a
 simple wrapper around the HTTP API, using Kenneth Reitz's excellent
 `Requests <http://docs.python-requests.org/en/latest/index.html>`_. In fact,
-it currently only gets data -- it cannot update a board. That should change
-soon though.
+it currently only gets some data -- it cannot update a board. That should
+change soon though. See lkkanban.http_api.HttpApi for which endpoints are
+currently wrapped, until they all are (at which point this sentence will
+go away).
 
 Using the HTTP API wrapper looks like this.
 
