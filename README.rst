@@ -2,7 +2,7 @@ LKKanban: LeanKitKanban's API for Python
 ========================================
 
 LKKanban aspires to make it easy to interact with LeanKitKanban via python.
-Unlike other python LeanKit libraries, it is permissively licenses (it uses
+Unlike other python LeanKit libraries, it is permissively licensed (it uses
 ISC). Although it aspires to provide a pythonic API, right now it is just a
 simple wrapper around the HTTP API, using Kenneth Reitz's excellent
 `Requests <http://docs.python-requests.org/en/latest/index.html>`_. In fact,
