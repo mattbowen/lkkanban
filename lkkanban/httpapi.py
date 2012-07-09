@@ -85,3 +85,13 @@ class HttpApi(object):
         endpoint = '/'.join((base_endpoint, str(card_id)))
         r = self.session.get(endpoint)
         return r.json
+
+    def get_card_by_external_id(self, board_id, extneral_id):
+        """Wraps LeanKit's GetCardByExternalId
+        See http://support.leankitkanban.com/entries/20268001-getcardbyexternalid
+        """
+        base_endpoint = self._get_endpoint('GetCardByExternalId', board_id)
+        endpoint = '/'.join((base_endpoint, str(extneral_id)))
+        r = self.session.get(endpoint)
+        return r.json
+
