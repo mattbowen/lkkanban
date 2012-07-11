@@ -15,14 +15,14 @@ Using the HTTP API wrapper looks like this.
 
 ::
 
-    >>> from lkkanban.httpapi import HttpApi
+    >>> from lkkanban.http_api import HttpApi
     >>> api = HttpApi('account', 'user@example.com', 'password')
     >>> api.get_boards()
     {u'ReplyText': u'Board(s) successfully retrieved.', u'ReplyCode': 200,
     u'ReplyData': [[{u'BreakoutBoards': None, u'Description': u'', u'Title':
     u'Our Board', u'DrillThroughBoards': [], u'IsBreakoutBoard': False,
     u'ParentId': 0, u'IsArchived': False, u'CreationDate': u'20/01/2012',
-    'Id': 10000000}]]
+    'Id': 10000000}]]}
 
 API method names follow the `Lean Kit docs
 <http://support.leankitkanban.com/forums/20153741-api>`_, but with the
